@@ -17,5 +17,5 @@ export const navbar = [
   },
   { text: '项目', link: '/posts', icon: 'IconDocumentAttachment' },
   { text: '博客', link: '/posts', icon: 'IconDocumentAttachment' },
-  { text: '留言板', link: '/docs/message-board', icon: 'IconChat' },
+  { text: '关于', link: '/docs/message-board', icon: 'IconChat' },
 ]

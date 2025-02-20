@@ -25,7 +25,7 @@ footer:
 # - title: 未来
 #   details: 吸引更多的朋友参与到开发中来，继续强大功能。
 ---
-
+<!-- 
 ## 快速开始
 
 ::: tip
@@ -53,4 +53,4 @@ theme-cli init
 # 初始化，并选择 2.x
 yarn global add @vuepress-reco/theme-cli@1.0.7
 theme-cli init
-```
+``` -->

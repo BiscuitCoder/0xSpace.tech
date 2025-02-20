@@ -28,11 +28,15 @@
         <img alt="Npm version" src="https://img.shields.io/badge/tailwindcss-3.1.6-0D00FF?style=flat-square&logo=tailwindcss"/>
       </div> -->
     </div>
+    <!-- <iframe src="/bg.html" border="0"></iframe> -->
   </section>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import {
+  computed,
+  onMounted,
+} from 'vue'
 
 import Link from 'vuepress-theme-reco/lib/client/components/Link.vue'
 import { createOneColor } from 'vuepress-theme-reco/lib/client/utils'
@@ -70,7 +74,23 @@ const bgImageStyle = computed(() => {
 </script>
 
 <style scoped>
+.banner-brand__wrapper{
+  position: relative;
+  .banner-brand__content{
+    position: relative;
+    z-index: 11;
+  }
+  iframe{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+}
 .shields-wrapper {
+  position: relative;
   @apply mt-20 text-left;
   img {
     @apply inline-block ml-0 mr-1 my-1 w-auto h-6 !important;

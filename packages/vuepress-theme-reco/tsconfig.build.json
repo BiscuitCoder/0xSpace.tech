@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "module": "ES2022",
+    "rootDir": "./src",
+    "outDir": "./lib",
+    "paths": {
+      "@types/*": ["./src/types/*"],
+      "@client/*": ["./src/client/*"],
+      "@utils/*": ["./src/client/utils/*"],
+      "@theme/*": ["./src/client/components/*"],
+      "@components/*": ["./src/client/components/*"],
+      "@composables/*": ["./src/client/composables/*"],
+    },
+  },
+  "include": ["./src"],
+  "references": [
+    { "path": "../@vuepress-reco/plugin-page/tsconfig.build.json" },
+  ]
+}

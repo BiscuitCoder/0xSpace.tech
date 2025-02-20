@@ -6,7 +6,6 @@ yarn-error.log
 package-lock.json
 lib
 libs
-dist
 example/.vuepress/.cache
 example/.vuepress/.temp
 packages/**/tsconfig.build.tsbuildinfo

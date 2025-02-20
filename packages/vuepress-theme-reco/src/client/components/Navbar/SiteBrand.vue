@@ -43,12 +43,6 @@ const { title, icon, link } = toRefs(props)
   </div>
 </template>
 
-<script lang="ts">
-const darkMedia = window.matchMedia('(prefers-color-scheme: dark)');
-darkMedia.onchange = (e) => {
-  console.log('e===>e');
-}
-</script>
 <style>
 .site-brand {
   @apply flex text-xl font-semibold;

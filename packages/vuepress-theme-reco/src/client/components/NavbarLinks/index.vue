@@ -38,16 +38,18 @@
 </template>
 
 <script lang="ts" setup>
-import { useSocialLinks } from './useSocialLinks.js'
-import { useNavbarConfig } from './useNavbarConfig.js'
-import { useMobile, useThemeLocaleData } from '@composables/index.js'
-import { useNavbarSelectLanguage } from './useNavbarSelectLanguage.js'
-
-import Link from '@components/Link.vue'
 import DropdownLink from '@components/DropdownLink/index.vue'
+import Link from '@components/Link.vue'
 import ToggleDarkModeButton from '@components/ToggleDarkModeButton.vue'
+import {
+  useMobile,
+  useThemeLocaleData,
+} from '@composables/index.js'
 
 import type { MenuLink } from '../../../types'
+import { useNavbarConfig } from './useNavbarConfig.js'
+import { useNavbarSelectLanguage } from './useNavbarSelectLanguage.js'
+import { useSocialLinks } from './useSocialLinks.js'
 
 const { isMobile } = useMobile()
 const navbarConfig = useNavbarConfig()

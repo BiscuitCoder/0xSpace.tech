@@ -47,6 +47,7 @@ const datas = computed<Datas>(() => {
 <style scoped>
 .navpage{
   width: 100%;
+  padding-bottom: 50px;
   >div{
     .title{
       font-weight: bold;

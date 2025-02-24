@@ -120,6 +120,7 @@ const showLenth = ref<number>(1);
 <style scoped>
 .banner-brand__wrapper{
   min-height: 100vh;
+  margin-top: 0;
   height: auto;
   position: relative;
   background: url('/bg.svg') no-repeat !important;
@@ -127,6 +128,15 @@ const showLenth = ref<number>(1);
   .banner-brand__content{
     position: relative;
     z-index: 11;
+  }
+}
+@media screen and (max-width: 768px) {
+  .banner-brand__wrapper{
+    background: url('/bg.svg') no-repeat !important;
+    background-size: contain !important;
+    .banner-brand__content{
+      margin-top: 5rem;
+    }
   }
 }
 .shields-wrapper {
@@ -144,6 +154,7 @@ const showLenth = ref<number>(1);
   backdrop-filter: blur(10px);
   border: 1px solid #7777772d;
   text-align: left;
+  background: rgba(255, 255, 255, 0.41);
   margin: 20px 0;
   .name{
     font-weight: bold;
@@ -181,9 +192,14 @@ const showLenth = ref<number>(1);
       line-height: 1.8em;
       text-align: left;
       letter-spacing: 0px;
+      word-break: break-all;
+    }
+    ::v-deep(img){
+      display: block;
+      max-width: 100%;
     }
     &:hover{
-      text-decoration: underline;
+      color: #0d00ff;
     }
   }
   

@@ -14,7 +14,7 @@
     "commit": "git add . && git-cz",
     "build": "vuepress build docs",
     "docs:deploy": "bash scripts/docs-deploy.sh",
-    "dev": "vuepress dev docs  --port=8087",
+    "dev": "vuepress dev docs --port=8087",
     "lint": "eslint --ext .js,.ts,.vue .",
     "release": "pnpm build && bash scripts/release.sh",
     "release:pre": "pnpm build && bash scripts/pre-release.sh",

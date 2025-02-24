@@ -19,10 +19,10 @@
       :item="navbarSelectLanguage"
     />
 
-    <ToggleDarkModeButton
+    <!-- <ToggleDarkModeButton
       v-if="!isMobile && (themeLocal.colorModeSwitch ?? true)"
       class="btn--dark-mode navbar-links__item"
-    />
+    /> -->
 
     <ul class="social-links navbar-links__item">
       <li

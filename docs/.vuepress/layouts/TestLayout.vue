@@ -2,20 +2,21 @@
   <GenericContainer>
     <section class="page-404-wrapper">
       <div class="content">
-        <h1>404</h1>
-        <p>Oops! Page does not exist.</p>
-        <div class="xicon-container">Go Home</div>
+        <h1>navs</h1>
       </div>
     </section>
   </GenericContainer>
 </template>
 
 <script lang="ts" setup>
-import { useRouteLocale } from 'vuepress/client';
-import GenericContainer from '@components/GenericContainer/index.vue'
-import { useThemeLocaleData } from '@composables/index.js';
+import { ref } from 'vue'
 
-const routeLocale = useRouteLocale()
-const themeLocal = useThemeLocaleData()
+import { usePageFrontmatter } from 'vuepress/client'
+
+// @ts-ignore
+import GenericContainer from '@components/GenericContainer/index.vue'
+
+const frontmatter = usePageFrontmatter()
+console.log('frontmatter==>',frontmatter.value);
 </script>
 

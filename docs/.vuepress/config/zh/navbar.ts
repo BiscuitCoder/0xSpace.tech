@@ -20,6 +20,5 @@ export const navbar = [
     ],
   },
   { text: '有点意思', link: '/posts', icon: 'IconDocumentAttachment' },
-  { text: '仙人指路', link: '/docs/guide/introduce', icon: 'IconCompass' },
-  { text: '扯扯闲篇', link: '/docs/message-board', icon: 'IconChat' },
+  { text: '仙人指路', link: '/navs/', icon: 'IconCompass' }
 ]

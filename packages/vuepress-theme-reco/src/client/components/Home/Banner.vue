@@ -16,10 +16,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from "vue";
-import { usePageFrontmatter, withBase } from 'vuepress/client'
+import { computed } from 'vue'
 
-import type { RecoThemeHomePageFrontmatter } from "../../../types";
+import {
+  usePageFrontmatter,
+  withBase,
+} from 'vuepress/client'
+
+import type { RecoThemeHomePageFrontmatter } from '../../../types'
 
 const frontmatter = usePageFrontmatter<RecoThemeHomePageFrontmatter>()
 

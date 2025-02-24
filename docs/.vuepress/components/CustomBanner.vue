@@ -5,7 +5,7 @@
 
       <p class="description" v-if="frontmatter?.customBanner?.description">{{ frontmatter?.customBanner?.description }}</p>
 
-      <p class="tagline" v-if="frontmatter?.customBanner?.tagline">{{ frontmatter?.customBanner?.tagline }}</p>
+      <p class="tagline" v-if="frontmatter?.customBanner?.tagline" v-html="frontmatter?.customBanner?.tagline"></p>
 
       
       <div class="btn-group" v-if="buttons.length > 0">
@@ -19,16 +19,20 @@
         />
       </div>
 
-      <!-- <div class="shields-wrapper">
-        <img alt="GitHub license" src="https://img.shields.io/github/license/vuepress-reco/vuepress-theme-reco?style=flat-square&logo=github&color=0D00FF">
-        <img alt="GitHub stars" src="https://img.shields.io/github/stars/vuepress-reco/vuepress-theme-reco?style=flat-square&logo=github&color=0D00FF">
-        <img alt="GitHub forks" src="https://img.shields.io/github/forks/vuepress-reco/vuepress-theme-reco?style=flat-square&logo=github&color=0D00FF">
-        <img alt="Npm downloads" src="https://img.shields.io/npm/dt/vuepress-theme-reco?style=flat-square&logo=npm&color=0D00FF">
-        <img alt="GitHub package.json version (subfolder of monorepo)" src="https://img.shields.io/github/package-json/v/vuepress-reco/vuepress-theme-reco?filename=packages%2Fvuepress-theme-reco%2Fpackage.json&style=flat-square&color=0D00FF&logo=npm">
-        <img alt="Npm version" src="https://img.shields.io/badge/tailwindcss-3.1.6-0D00FF?style=flat-square&logo=tailwindcss"/>
-      </div> -->
+      <div class="live" v-if="news.length">
+          <div class="name">
+            <div class="load">
+              <div class="loading"></div><span>正在发生</span>
+            </div>
+            <small class="more" @click="showLenth = showLenth>1?1:news.length">{{showLenth>1?'收起':'更多'}}({{ news.length }})</small>
+          </div>
+          <div v-for="(item,index) in news" :key="index" v-show="index<showLenth">
+            <div class="date">{{ item.pubDate }}</div>
+            <a v-html="item.description" :href="item.link" target="_blank"></a>
+          </div>
+      </div>
+
     </div>
-    <!-- <iframe src="/bg.html" border="0"></iframe> -->
   </section>
 </template>
 
@@ -36,6 +40,7 @@
 import {
   computed,
   onMounted,
+  ref,
 } from 'vue'
 
 import Link from 'vuepress-theme-reco/lib/client/components/Link.vue'
@@ -71,22 +76,55 @@ const bgImageStyle = computed(() => {
 
   return bgImageStyle ? { ...initBgImageStyle, ...bgImageStyle } : initBgImageStyle
 })
+
+
+// 数据请求
+interface RssItem {
+  title: string;
+  link: string;
+  description: string;
+  pubDate: string;
+  author: string;
+  category: string[];
+}
+const news = ref<RssItem[]>([]);
+const getDatas = async()=>{
+  const response = await fetch('https://api.allorigins.win/raw?url=https://rss.panewslab.com/zh/tvsq/rss');
+  const parser = new DOMParser();
+  const xmlDoc = parser.parseFromString(await response.text(), "text/xml");
+  const items = xmlDoc.querySelectorAll('item');
+  const rssData = {
+    title: xmlDoc.querySelector('channel > title')?.textContent || '',
+    description: xmlDoc.querySelector('channel > description')?.textContent || '',
+    items: Array.from(items).map(item => ({
+      title: item.querySelector('title')?.textContent || '',
+      link: item.querySelector('link')?.textContent || '',
+      description: item.querySelector('description')?.textContent || '',
+      pubDate: item.querySelector('pubDate')?.textContent || '',
+      author: item.querySelector('author')?.textContent || '',
+      category: Array.from(item.querySelectorAll('category')).map(cat => cat.textContent)
+    }))
+  };
+  news.value = rssData.items;
+}
+onMounted(() => {
+  getDatas();
+});
+
+// 控制显示
+const showLenth = ref<number>(1);
 </script>
 
 <style scoped>
 .banner-brand__wrapper{
+  min-height: 100vh;
+  height: auto;
   position: relative;
+  background: url('/bg.svg') no-repeat !important;
+  background-size: 100% !important;
   .banner-brand__content{
     position: relative;
     z-index: 11;
-  }
-  iframe{
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 1;
   }
 }
 .shields-wrapper {
@@ -96,4 +134,77 @@ const bgImageStyle = computed(() => {
     @apply inline-block ml-0 mr-1 my-1 w-auto h-6 !important;
   }
 }
+
+.live{
+  background: rgba(255, 255, 255, 0.048);
+  padding: 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(10px);
+  border: 1px solid #7777772d;
+  text-align: left;
+  margin: 20px 0;
+  .name{
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 14px;
+    .load{
+      display: flex;
+      align-items: center;
+      color: #00d170;
+    }
+    .more{
+      cursor: pointer;
+      font-size: 12px;
+    }
+  }
+  .date{
+    font-weight: 500;
+    letter-spacing: 0;
+    font-size: 12px;
+    color: rgba(128, 128, 128, 0.603);
+    margin-top: 20px;
+  }
+  a{
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0;
+    margin-top: -10px;
+    border-bottom: 1px dashed rgba(128, 128, 128, 0.164);
+    ::v-deep(p){
+      display: block;
+      margin: 10px 0;
+      line-height: 1.8em;
+      text-align: left;
+      letter-spacing: 0px;
+    }
+    &:hover{
+      text-decoration: underline;
+    }
+  }
+  
+}
+
+.loading {
+  width: 20px;
+  height: 20px;
+  border-radius: 100%;
+  background-color: #00d170;
+  animation: ball-scale infinite linear 1s;
+  margin-right: 10px;
+}
+
+@keyframes ball-scale {
+  0% {
+    transform: scale(0.1);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0;
+  }
+}
+
 </style>

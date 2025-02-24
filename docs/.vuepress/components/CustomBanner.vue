@@ -21,7 +21,6 @@
 
       <Transition name="fade">
         <div class="live" v-if="news.length">
-          
             <div class="name">
               <div class="load">
                 <div class="loading"></div><span>正在发生</span>
@@ -30,7 +29,10 @@
             </div>
             <div v-for="(item,index) in news" :key="index" v-show="index<showLenth">
               <div class="date">{{ item.pubDate }}</div>
-              <a v-html="item.description" :href="item.link" target="_blank"  :style="`border-bottom: ${showLenth<=1 && 'none;'}`"></a>
+              <a :href="item.link" target="_blank" rel="noopener noreferrer" :style="`border-bottom:${showLenth>1?'':'none'} ;`">
+                <div><b>{{ item.title }}</b></div>
+                <p v-html="item.description"   :style="`border-bottom: ${showLenth<=1 && 'none;'}`"></p>
+              </a>
             </div>
         </div>
       </Transition>
@@ -123,7 +125,7 @@ const showLenth = ref<number>(1);
   margin-top: 0;
   height: auto;
   position: relative;
-  background: url('/bg.svg') no-repeat !important;
+  background: url('/bg2.svg') no-repeat !important;
   background-size: 100% !important;
   .banner-brand__content{
     position: relative;
@@ -149,12 +151,12 @@ const showLenth = ref<number>(1);
 
 .live{
   background: rgba(255, 255, 255, 0.048);
-  padding: 10px;
+  padding: 20px;
   border-radius: 10px;
   backdrop-filter: blur(10px);
   border: 1px solid #7777772d;
   text-align: left;
-  background: rgba(255, 255, 255, 0.41);
+  background: rgba(255, 255, 255, 0.674);
   margin: 20px 0;
   .name{
     font-weight: bold;
@@ -178,25 +180,30 @@ const showLenth = ref<number>(1);
     font-size: 12px;
     color: rgba(128, 128, 128, 0.603);
     margin-top: 20px;
+    margin-bottom: 10px;
   }
   a{
     display: block;
     font-size: 14px;
     font-weight: 500;
     letter-spacing: 0;
-    margin-top: -10px;
     border-bottom: 1px dashed rgba(128, 128, 128, 0.164);
+    >div{
+      font-size: 16px;
+    }
     ::v-deep(p){
       display: block;
-      margin: 10px 0;
+      margin: 5px 0;
       line-height: 1.8em;
       text-align: left;
       letter-spacing: 0px;
       word-break: break-all;
+      color: #64748b;
     }
     ::v-deep(img){
       display: block;
       max-width: 100%;
+      border-radius: 0;
     }
     &:hover{
       color: #0d00ff;

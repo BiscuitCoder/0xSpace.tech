@@ -29,7 +29,7 @@ export const themeConfig: RecoThemeData = {
     //   bulletin: enConfig.bulletin,
     // },
   },
-  colorMode: 'dark',
+  colorMode: 'light',
   logo: '/logo.png',
   author: 'Keylen',
   docsRepo: 'https://github.com/BiscuitCoder/blogsite',

@@ -63,6 +63,7 @@ const datas = computed<Datas>(() => {
       display: flex;
       color: #333;
       align-items: center;
+      letter-spacing: 0;
       &:hover{
         img{
           transform: scale(1.25);

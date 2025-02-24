@@ -1,6 +1,6 @@
 export const navbar = [
   { text: '首页', link: '/', icon: 'IconHome' },
-  { text: '何以至此', link: '/docs/guide/introduce', icon: 'IconCompass' },
+  { text: '何以至此', link: '/docs/guide/introduce', icon: 'IconFire' },
   {
     text: '欲练此功',
     icon: 'IconSubVolume',

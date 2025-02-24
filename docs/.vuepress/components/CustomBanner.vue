@@ -19,19 +19,21 @@
         />
       </div>
 
-      <div class="live" v-if="news.length">
-          <div class="name">
-            <div class="load">
-              <div class="loading"></div><span>正在发生</span>
+      <Transition name="fade">
+        <div class="live" v-if="news.length">
+          
+            <div class="name">
+              <div class="load">
+                <div class="loading"></div><span>正在发生</span>
+              </div>
+              <small class="more" @click="showLenth = showLenth>1?1:news.length">{{showLenth>1?'收起':'更多'}}({{ news.length }})</small>
             </div>
-            <small class="more" @click="showLenth = showLenth>1?1:news.length">{{showLenth>1?'收起':'更多'}}({{ news.length }})</small>
-          </div>
-          <div v-for="(item,index) in news" :key="index" v-show="index<showLenth">
-            <div class="date">{{ item.pubDate }}</div>
-            <a v-html="item.description" :href="item.link" target="_blank"></a>
-          </div>
-      </div>
-
+            <div v-for="(item,index) in news" :key="index" v-show="index<showLenth">
+              <div class="date">{{ item.pubDate }}</div>
+              <a v-html="item.description" :href="item.link" target="_blank"  :style="`border-bottom: ${showLenth<=1 && 'none;'}`"></a>
+            </div>
+        </div>
+      </Transition>
     </div>
   </section>
 </template>

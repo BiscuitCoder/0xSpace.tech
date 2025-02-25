@@ -8,7 +8,7 @@ modules:
 customBanner:
   bgImage: '/bg.svg'
   title: Ox Space
-  description: '您的Web3首发站 🚀'
+  description: '🏊 在Web3的海洋里猛刨~'
   tagline: Web3世界像一场没有地图的奇幻漂流，每当你刚摸清某个项目的全貌，新大陆的轮廓又在地平线上若隐若现。这并不是技术密码太难破译，而是整个生态正在用光速编织着错综复杂的故事线。从第一个披萨饼的售出到NFT头像的文艺复兴，再到Defi&DAO组织的热血革命，每个加密传说都藏着值得深挖的前传与番外。
   buttons:
     - { text: 视频合集, link: '' }

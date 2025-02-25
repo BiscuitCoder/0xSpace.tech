@@ -2,10 +2,10 @@
   <div class="mobile-menus-container">
     <NavbarLinks class="mobile" />
 
-    <div class="appearance">
+    <!-- <div class="appearance">
       <span>Appearance</span>
       <ToggleDarkModeButton  v-if="themeLocal.colorModeSwitch ?? true" />
-    </div>
+    </div> -->
   </div>
 </template>
 

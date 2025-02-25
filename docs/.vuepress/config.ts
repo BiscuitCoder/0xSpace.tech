@@ -11,7 +11,7 @@ export default defineUserConfig({
     // 作为特例，默认语言可以使用 '/' 作为其路径。
     '/': {
       lang: 'zh-CN',
-      title: '0xSpace-您的Web3首发站',
+      title: '0xSpace-在Web3的海洋里猛刨~',
       description: '一款简洁的 vuepress 博客 & 文档 主题。',
     },
     // '/en/': {

@@ -12,7 +12,7 @@ customBanner:
   tagline: Web3 世界如同没有地图的奇幻漂流，刚摸清某个项目，新领域又在地平线隐现。这不是技术密码难破译，而是整个生态在飞速编织复杂网络。本站精心整理相关文档与技术教程，助你快速踏入 Web3 世界。
   buttons:
     - { text: 视频合集, link: '' }
-    - { text: 常用链接, link: '/navs/', type: 'plain' }
+    - { text: 智能体, link: 'https://www.coze.cn/s/i5LMuARr', type: 'plain', icon:'IconMagicWand' }
   socialLinks:
     - { icon: 'LogoGithub', link: 'https://github.com/vuepress-reco/vuepress-theme-reco' }
 footer:

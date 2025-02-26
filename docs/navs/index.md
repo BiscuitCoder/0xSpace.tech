@@ -1,5 +1,5 @@
 ---
-title: 🧭 区块链导航
+title: web3导航
 date: 2025-02-20
 layout: NavsLayout
 categories:

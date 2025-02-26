@@ -9,14 +9,23 @@
 
       
       <div class="btn-group" v-if="buttons.length > 0">
-        <Xicons
+
+        <RouteLink class="xicon-container left" to="/videos/">
+          <span class="xicon-content" style="display: flex;align-items: center;"><IconPlay style="width: 20px;margin-right: 10px;"/><b>视频合集</b></span>
+        </RouteLink>
+
+        <a class="xicon-container left plain" href="https://www.coze.cn/s/i5LMuARr" target="_blank">
+          <span class="xicon-content"  style="display: flex;align-items: center;"><IconMagicWand style="width: 20px;margin-right: 10px;"/><b>智能体</b></span>
+        </a>
+
+        <!-- <Xicons
           v-for="(btn, index) in buttons" :class="btn.type" :key="index"
           :icon="btn.icon"
           :text="btn.text"
           :link="btn.link"
           icon-size="18"
           text-size="14"
-        />
+        /> -->
       </div>
 
       <Transition name="fade">

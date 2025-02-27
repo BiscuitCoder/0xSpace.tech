@@ -138,9 +138,12 @@ const showLenth = ref<number>(1);
   /* background: url('/bg2.svg') no-repeat !important; */
   background: none !important;
   background-size: 100% !important;
+  display: block !important;
   .banner-brand__content{
     position: relative;
     z-index: 11;
+    margin: 0 auto;
+    margin-top: 50px;
   }
 }
 iframe{

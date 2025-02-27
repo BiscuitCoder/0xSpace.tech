@@ -2,6 +2,8 @@ import { defineUserConfig } from 'vuepress'
 import { recoTheme } from 'vuepress-theme-reco'
 
 import { viteBundler } from '@vuepress/bundler-vite'
+import { seoPlugin } from '@vuepress/plugin-seo'
+import { sitemapPlugin } from '@vuepress/plugin-sitemap'
 
 import { themeConfig } from './config/index'
 
@@ -20,6 +22,19 @@ export default defineUserConfig({
     //   description: 'A simple vuepress Blog & Doc theme.',
     // },
   },
+  head:[
+    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['meta', { property: 'og:image', content: '/og.svg' }]
+  ],
+  plugins: [
+    seoPlugin({
+      hostname: '0xspace.tech'
+    }),
+    sitemapPlugin({
+      hostname: '0xspace.tech',
+      devServer:true
+    })
+  ],
   bundler: viteBundler({}),
   theme: recoTheme(themeConfig),
   // debug: true,

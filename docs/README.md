@@ -7,7 +7,7 @@ modules:
   - Footer
 customBanner:
   bgImage: '/bg.svg'
-  title: Ox Space
+  title: 0x Space
   description: '🏊 在Web3的海洋里猛刨~'
   tagline: Web3 世界如同没有地图的奇幻漂流，刚摸清某个项目，新领域又在地平线隐现。这不是技术密码难破译，而是整个生态在飞速编织复杂网络。本站精心整理相关文档与技术教程，助你快速踏入 Web3 世界。
   buttons:

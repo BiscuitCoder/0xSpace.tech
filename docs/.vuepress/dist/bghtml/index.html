@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+        
+        #physics-container {
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="1" src="./1.svg" style="display: none;">
+    <img id="2" src="./2.svg" style="display: none;">
+    <img id="3" src="./3.svg" style="display: none;">
+    <img id="4" src="./4.svg" style="display: none;">
+    <img id="5" src="./5.svg" style="display: none;">
+    <img id="6" src="./6.svg" style="display: none;">
+    <img id="7" src="./7.svg" style="display: none;">
+    <div id="physics-container"></div>
+    <script src="./matter.js"></script>
+    <script>
+        var Example = Example || {};
+
+        Example.ballPool = function() {
+            var Engine = Matter.Engine,
+                Render = Matter.Render,
+                Runner = Matter.Runner,
+                Composite = Matter.Composite,
+                Composites = Matter.Composites,
+                Common = Matter.Common,
+                MouseConstraint = Matter.MouseConstraint,
+                Mouse = Matter.Mouse,
+                Bodies = Matter.Bodies;
+
+            // create engine
+            var engine = Engine.create(),
+                world = engine.world;
+
+            // create renderer
+            var render = Render.create({
+                element: document.getElementById('physics-container'),
+                engine: engine,
+                options: {
+                    width: window.innerWidth,
+                    height: window.innerHeight,
+                    wireframes: false,
+                    background: '#ffffff'
+                }
+            });
+
+            Render.run(render);
+
+            // create runner
+            var runner = Runner.create();
+            Runner.run(runner, engine);
+
+            // add bodies
+            Composite.add(world, [
+                Bodies.rectangle(window.innerWidth / 2, window.innerHeight, window.innerWidth, 10, {
+                    isStatic: true,
+                    render: {
+                        fillStyle: '#ffffff'
+                    }
+                }),
+                // 添加左右墙壁
+                Bodies.rectangle(0, window.innerHeight / 2, 10, window.innerHeight, {
+                    isStatic: true,
+                    render: {
+                        fillStyle: '#ffffff'
+                    }
+                }),
+                Bodies.rectangle(window.innerWidth, window.innerHeight / 2, 10, window.innerHeight, {
+                    isStatic: true,
+                    render: {
+                        fillStyle: '#ffffff'
+                    }
+                })
+            ]);
+
+            // 计算小球参数
+            var maxRadius = 60; // 最大半径
+            var spacing = 10; // 间距
+            var ballWidth = maxRadius * 2 + spacing; // 每个小球占用的宽度
+            var columns = Math.floor(window.innerWidth / ballWidth * 1.5); // 计算可以放置的列数
+
+            // 创建小球
+            var stack = Composites.stack(
+                spacing, -window.innerHeight,
+                columns,
+                4,
+                spacing,
+                spacing,
+                function(x, y) {
+                    var radius = Common.random(15, maxRadius);
+                    var iconIndex = Math.floor(Math.random() * 7) + 1;
+                    return Bodies.circle(x, y, radius, {
+                        restitution: 0.05,
+                        friction: 1,
+                        render: {
+                            sprite: {
+                                texture: `./${iconIndex}.svg`,
+                                xScale: (2 * radius) / document.getElementById(`${iconIndex}`).width,
+                                yScale: (2 * radius) / document.getElementById(`${iconIndex}`).height
+                            },
+                            strokeStyle: '#FFD700',
+                            lineWidth: 3
+                        }
+                    });
+                }
+            );
+
+            Composite.add(world, [
+                stack
+            ]);
+
+            // add mouse control
+            var mouse = Mouse.create(render.canvas),
+                mouseConstraint = MouseConstraint.create(engine, {
+                    mouse: mouse,
+                    constraint: {
+                        stiffness: 0.2,
+                        render: {
+                            visible: false
+                        }
+                    }
+                });
+
+            Composite.add(world, mouseConstraint);
+            render.mouse = mouse;
+
+            // 增强鼠标点击效果
+            Matter.Events.on(mouseConstraint, 'mousedown', function(event) {
+                var mouse = event.mouse;
+                var bodies = Composite.allBodies(world);
+                var selectedBody = Matter.Query.point(bodies, mouse.position)[0];
+
+                if (selectedBody) {
+                    // 初始化或获取当前实际缩放值
+                    selectedBody.actualScale = selectedBody.actualScale || 1;
+
+                    // 只有当实际缩放值小于2时才允许放大
+                    if (selectedBody.actualScale < 2.5) {
+                        Matter.Body.scale(selectedBody, 1.5, 1.5);
+                        selectedBody.actualScale *= 1.5; // 更新实际缩放值
+
+                        // 3秒后恢复原始大小
+                        setTimeout(function() {
+                            Matter.Body.scale(selectedBody, 1 / 1.5, 1 / 1.5);
+                            selectedBody.actualScale /= 1.5; // 更新实际缩放值
+                        }, 2000);
+                    }
+                }
+            });
+
+            // fit the render viewport to the scene
+            Render.lookAt(render, {
+                min: {
+                    x: 0,
+                    y: 0
+                },
+                max: {
+                    x: window.innerWidth,
+                    y: window.innerHeight
+                }
+            });
+
+            return {
+                engine: engine,
+                runner: runner,
+                render: render,
+                canvas: render.canvas,
+                stop: function() {
+                    Matter.Render.stop(render);
+                    Matter.Runner.stop(runner);
+                }
+            };
+        };
+
+        // 添加执行入口
+        window.addEventListener('load', function() {
+            Example.ballPool();
+        });
+    </script>
+</body>
+
+</html>

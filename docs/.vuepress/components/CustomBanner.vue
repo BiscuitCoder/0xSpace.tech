@@ -47,6 +47,7 @@
       </Transition>
     </div>
   </section>
+  <iframe src="/bghtml/index.html" frameborder="0" scrolling="no" />
 </template>
 
 <script setup lang="ts">
@@ -134,20 +135,32 @@ const showLenth = ref<number>(1);
   margin-top: 0;
   height: auto;
   position: relative;
-  background: url('/bg2.svg') no-repeat !important;
+  /* background: url('/bg2.svg') no-repeat !important; */
+  background: none !important;
   background-size: 100% !important;
   .banner-brand__content{
     position: relative;
     z-index: 11;
   }
 }
+iframe{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+  }
 @media screen and (max-width: 768px) {
   .banner-brand__wrapper{
-    background: url('/bg.svg') no-repeat !important;
+    /* background: url('/bg.svg') no-repeat !important; */
     background-size: contain !important;
     .banner-brand__content{
       margin-top: 5rem;
     }
+  }
+  iframe{
+    display: none;
   }
 }
 .shields-wrapper {
@@ -165,7 +178,7 @@ const showLenth = ref<number>(1);
   backdrop-filter: blur(10px);
   border: 1px solid #7777772d;
   text-align: left;
-  background: rgba(255, 255, 255, 0.674);
+  background: rgba(255, 255, 255, 0.883);
   margin: 20px 0;
   .name{
     font-weight: bold;

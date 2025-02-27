@@ -31,7 +31,7 @@ import GenericContainer from '@components/GenericContainer/index.vue'
 type Datas = {
   title: string;
   items: {
-    name: string;
+    url: string;
     img: string;
     name: string;
   }[];

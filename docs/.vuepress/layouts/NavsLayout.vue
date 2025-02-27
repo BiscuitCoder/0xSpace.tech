@@ -93,6 +93,7 @@ const datas = computed<Datas>(() => {
         border-radius: 10px;
         transition: all 0.3s ease;
         transform-origin: right;
+        background: rgb(240, 240, 240);
       }
     }
   }

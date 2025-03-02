@@ -36,9 +36,9 @@ export const themeConfig: RecoThemeData = {
   docsBranch: 'main',
   docsDir: '/docs',
   algolia: {
-    appId: '38R2J3MTQC',
-    apiKey: '583d3caf699630b08a9bc2d12d599701',
-    indexName: 'v2-vuepress-reco-recoluan',
+    appId: 'OYGN8RRALB',
+    apiKey: '7c8075560f75ecf8cb5d376cfaf56f2a',
+    indexName: 'fa83b996ca1ea79c3a3831111457f79a',
     // inputSelector: '### REPLACE ME ####',
     // algoliaOptions: { 'facetFilters': ["lang:$LANG"] },
     // debug: false // Set debug to true if you want to inspect the dropdown

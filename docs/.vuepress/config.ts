@@ -25,7 +25,8 @@ export default defineUserConfig({
   head:[
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { property: 'og:image', content: '/og.svg' }],
-    ['meta', { name: 'baidu-site-verification', content: 'codeva-tvwqBt0esg' }]
+    ['meta', { name: 'baidu-site-verification', content: 'codeva-tvwqBt0esg' }],
+    ['meta', { name: 'lgolia-site-verification', content: 'DCF509E99B418C75' }],
   ],
   plugins: [
     seoPlugin({

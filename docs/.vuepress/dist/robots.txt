@@ -1,5 +1,2 @@
-
-User-agent:*
-Disallow:
-
+# Algolia-Crawler-Verif: DCF509E99B418C75
 Sitemap: https://0xspace.tech/sitemap.xml

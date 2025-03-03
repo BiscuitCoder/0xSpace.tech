@@ -37,7 +37,7 @@ export const themeConfig: RecoThemeData = {
   docsDir: '/docs',
   algolia: {
     appId: 'OYGN8RRALB',
-    apiKey: '7c8075560f75ecf8cb5d376cfaf56f2a',
+    apiKey: '9dc1139e139c59f78164e7370cfdd3bf',
     indexName: '0xspace_tech_oygn8rralb_articles',
     // inputSelector: '### REPLACE ME ####',
     // algoliaOptions: { 'facetFilters': ["lang:$LANG"] },

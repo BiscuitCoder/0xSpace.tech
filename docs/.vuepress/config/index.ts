@@ -36,9 +36,9 @@ export const themeConfig: RecoThemeData = {
   docsBranch: 'main',
   docsDir: '/docs',
   algolia: {
-    appId: 'OYGN8RRALB',
-    apiKey: '7c8075560f75ecf8cb5d376cfaf56f2a',
-    indexName: '0xspace_tech_oygn8rralb_articles',
+    appId: 'N9C91DEY7R',
+    apiKey: '9730f5c36486207ec8726568786edbde',
+    indexName: '0xspace',
     // inputSelector: '### REPLACE ME ####',
     // algoliaOptions: { 'facetFilters': ["lang:$LANG"] },
     // debug: false // Set debug to true if you want to inspect the dropdown

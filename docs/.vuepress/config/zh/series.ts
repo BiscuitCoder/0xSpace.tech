@@ -32,8 +32,8 @@ export const series = {
     '修炼路线',
     '输送江湖',
     {
-      text: '各大门派',
-      children: ['Wallet','BTC','EVM','L2', 'Solana','Move','EOS'],
+      text: '各大秘籍',
+      children: ['Wallet','Dapp','BTC','EVM','L2', 'Solana','Move','EOS'],
     },
     {
       text: 'Web3春典',

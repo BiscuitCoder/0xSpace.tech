@@ -1,9 +1,9 @@
 <template>
   <footer class="page-meta">
-    <div v-if="editNavLink" class="meta-item edit-link">
+    <!-- <div v-if="editNavLink" class="meta-item edit-link">
       <Xicons class="meta-item-label" :icon="editNavLink.icon" :text="editNavLink.text" :link="editNavLink.link"
         target="_blank" icon-size="20" text-size="14" />
-    </div>
+    </div> -->
 
     <div v-if="lastUpdated" class="meta-item last-updated">
       <Xicons class="meta-item-label" :icon="IconCalendar"
@@ -13,16 +13,25 @@
 </template>
 
 <script lang="ts" setup>
-import { computed } from 'vue'
-import { usePageData } from 'vuepress/client'
-import { IconEdit, IconCalendar } from '@components/icons/index.js'
-
-import { resolveEditLink } from '@utils/index.js'
-import { useThemeLocaleData, usePageFrontmatter } from '@composables/index.js'
-
-
 import type { ComputedRef } from 'vue'
-import type { RecoThemePageData, MenuLink } from '../../types'
+import { computed } from 'vue'
+
+import { usePageData } from 'vuepress/client'
+
+import {
+  IconCalendar,
+  IconEdit,
+} from '@components/icons/index.js'
+import {
+  usePageFrontmatter,
+  useThemeLocaleData,
+} from '@composables/index.js'
+import { resolveEditLink } from '@utils/index.js'
+
+import type {
+  MenuLink,
+  RecoThemePageData,
+} from '../../types'
 
 const useEditNavLink = (): ComputedRef<null | MenuLink> => {
   const themeLocal = useThemeLocaleData()

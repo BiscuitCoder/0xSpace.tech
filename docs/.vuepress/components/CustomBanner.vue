@@ -7,6 +7,13 @@
 
       <p class="tagline" v-if="frontmatter?.customBanner?.tagline" v-html="frontmatter?.customBanner?.tagline"></p>
 
+
+      <div class="flex items-center justify-center" style="flex-wrap: wrap;">
+       <small style="margin-right: 10px;color: #6028b8;font-weight: bold;">🚀 基于此模板，你可以速启动自己的dApp项目！</small>
+        <a href="https://github.com/BiscuitCoder/web3-next-temp" target="_blank" class="inline-block">
+          <img src="https://img.shields.io/badge/示例模板-MIT-green?logo=nextdotjs" alt="" srcset="">
+        </a>
+      </div>
       
       <div class="btn-group" v-if="buttons.length > 0">
 

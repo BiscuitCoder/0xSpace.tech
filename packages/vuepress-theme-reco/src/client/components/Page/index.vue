@@ -78,7 +78,7 @@ onMounted(()=>{
   const script = document.createElement('script');
   // 设置 script 元素的属性
   script.src = 'https://giscus.app/client.js';
-  script.setAttribute('data-repo', 'BiscuitCoder/blogsite');
+  script.setAttribute('data-repo', 'BiscuitCoder/0xSpace.tech');
   script.setAttribute('data-repo-id', 'R_kgDON8d6bg');
   script.setAttribute('data-category', 'Announcements');
   script.setAttribute('data-category-id', 'DIC_kwDON8d6bs4CnYzf');

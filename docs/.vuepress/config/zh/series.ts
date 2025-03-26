@@ -1,8 +1,7 @@
 export const series = {
-  // todo README.md 无法展示，没有对 '' 进行处理
   '/docs/why/': [
     {
-      text: '何以至此？',
+      text: '发展历程',
       children: [
         '简史',
         '中本聪的野望',
@@ -12,6 +11,13 @@ export const series = {
         'DeFi & NFT带来重构',
         'L2公链大战',
         '魔幻现实 Solana & MeMe'
+      ],
+    },
+    {
+      text: '核心协议',
+      children: [
+        'Dex基石-Uniswap',
+        'Token标准-ERC20'
       ],
     },
     {

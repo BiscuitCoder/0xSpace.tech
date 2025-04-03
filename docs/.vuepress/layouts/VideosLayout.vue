@@ -46,6 +46,7 @@ const datas = computed<Datas>(() => {
 <style scoped>
 .videospage{
   width: 100%;
+  margin-bottom: 50px;
   .group{
     display: grid;
     width: 100%;

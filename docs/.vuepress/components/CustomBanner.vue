@@ -54,7 +54,7 @@
       </Transition>
     </div>
   </section>
-  <iframe src="/bghtml/index.html" frameborder="0" scrolling="no" />
+  <!-- <iframe src="/bghtml/index.html" frameborder="0" scrolling="no" /> -->
 </template>
 
 <script setup lang="ts">

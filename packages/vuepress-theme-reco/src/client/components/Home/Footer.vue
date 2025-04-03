@@ -9,6 +9,7 @@
       />
     </span>
 
+
     <span v-show="frontmatter?.footer?.record">
       <Xicons
         :icon="IconSecurity"
@@ -36,6 +37,10 @@
     <span class="cyber-security" v-if="frontmatter?.footer?.cyberSecurityRecord">
       <img src="../../assets/cyberSecurityRecord.png" alt="">
       <a :href="frontmatter?.footer?.cyberSecurityLink || '#'" target="_blank">{{ frontmatter?.footer?.cyberSecurityRecord }}</a>
+    </span>
+
+    <span style="top: -4px;position: relative;">
+      <a href="https://beian.miit.gov.cn/" target="_blank" style="font-size: 12px;">蜀ICP备2023036362号</a>
     </span>
 
     <Comments v-if="!isShowCommentAtHomePage" :hide-comments="true" />

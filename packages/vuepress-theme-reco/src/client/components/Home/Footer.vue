@@ -39,9 +39,9 @@
       <a :href="frontmatter?.footer?.cyberSecurityLink || '#'" target="_blank">{{ frontmatter?.footer?.cyberSecurityRecord }}</a>
     </span>
 
-    <span style="top: -4px;position: relative;">
+    <!-- <span style="top: -4px;position: relative;">
       <a href="https://beian.miit.gov.cn/" target="_blank" style="font-size: 12px;">蜀ICP备2023036362号</a>
-    </span>
+    </span> -->
 
     <Comments v-if="!isShowCommentAtHomePage" :hide-comments="true" />
   </div>
